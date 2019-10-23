@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.mycompany</groupId>
+	<artifactId>SpringProgramming02</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<!-- 변수 설정. 버전을 동일 시하기 위한 -->
+		<spring-version>5.2.0.RELEASE</spring-version>
+		<!-- spring과 관련된 라이브러리는 버전이 전체적으로 동일해야 함으로 -->
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j 위 위치에 가면 아래 Maven 코드가 
+			있다. 이 위치에 이러한 형식으로 추가하고 저장하면 무엇인가 저장된다. 이후 Dependencies 태그를 보면 다운 됬다는 것을 
+			알 수 있다. -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 SLF4J LOG4J 
+			12 Binding » 1.7.28 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-slf4j-impl</artifactId> 
+			<version>2.12.1</version> </dependency> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- 어떤범위에서 해당 라이브러리를 사용할 것인가를 설정한다. -->
+		<!-- 하지만 자동적으로 의존성 라이브러리까지 다운받기때문에 slf4j-log4j12 를 받으면 log4j와 slf4j-api 
+			까지 같이 다운된다. 즉 이 코드를 추가하는 것 만으로 라이브러리에 등록할 수 있다. 관련 정보를 보고 싶다면 View All의 pom파일을 
+			확인하면 된다. -->
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<!-- logback 라이브러리 설치 -->
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+			<!-- 범위 필요 없음 <scope>test</scope> -->
+		</dependency>
+		<!-- logback -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- spring mvc. 즉 모델컨트롤을 위한 springframework -->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- spring jdbc 받기 단 우리가 설정한 springframework의 버전과 동일해야 한다. -->
+		<!-- 그렇기에 property로 spring의 버전을 통일시키는 것이다. 만약 다운 하고 싶다면 변수 spring-version의 
+			값만 바꾸면 되기 때문이다. -->
+
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- jstl 추가 설치. jstl 2011년 버전의 것이다. -->
+
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
+		<!-- Json 라이브러리 -->
+
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- multi-part upload 를 위한 등록 -->
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!-- dbcp. commons dbcp2. DB연결을 위한 Connection Pool을 만들기 위함 -->
+
+
+		<!-- mybatis을 사용하려면 2개가 있어야 한다. -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.2</version>
+		</dependency>
+		<!-- myBatis 그 자체 -->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+		<!-- myBatis를 spring에서 사용할 수 있게 해주는 툴 -->
+
+
+	</dependencies>
+
+
+	<build>
+		<!-- 컴파일이 어떻게 될 것인가를 확인 -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
